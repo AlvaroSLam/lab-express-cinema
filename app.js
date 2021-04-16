@@ -9,6 +9,8 @@ const mongoose = require('mongoose');
 const logger = require('morgan');
 const path = require('path');
 
+const PORT = 3000
+
 const app_name = require('./package.json').name;
 const debug = require('debug')(
   `${app_name}:${path.basename(__filename).split('.')[0]}`
@@ -37,5 +39,9 @@ app.locals.title = 'Express - Generated with IronGenerator';
 
 const index = require('./routes/index');
 app.use('/', index);
+
+app.listen(PORT, () =>{
+  console.log(`Server is running on port ${PORT}`)
+})
 
 module.exports = app;
